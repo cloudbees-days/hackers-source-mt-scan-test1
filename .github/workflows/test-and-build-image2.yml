@@ -32,7 +32,7 @@ jobs:
           name: manavt-Docker-artifact
           url: https://hub.docker.com/repository/docker/hackers
           version: 1.0.0
-          label: "For Testing GHA integration"
+          label: "ForTestingGHAPush"
 
       - name: Publish evidence
         uses: cloudbees-io-gha/publish-evidence-item@v2
