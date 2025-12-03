@@ -23,7 +23,22 @@ jobs:
     #    if: always()
     #    env:
     #      LAUNCHABLE_TOKEN: ${{ secrets.LAUNCHABLE_TOKEN }}
+      - name: register-artifact-step-with-options
+        uses: cloudbees-io-gha/register-build-artifact@v3
+        with:
+          name: manavt-Docker-artifact
+          url: https://hub.docker.com/repository/docker/hackers
+          version: 1.0.0
+          label: "For Testing GHA integration"
 
+      - name: Publish evidence
+        uses: cloudbees-io-gha/publish-evidence-item@v2
+        with:
+          content: |-
+            # publish the built artifact as evidence
+            - Application endpoint: https://hackers-organized-prod.preview.cb-demos.io/
+            - Artifacts
+              - [container](https://hub.docker.com/repository/docker/hackers)
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
